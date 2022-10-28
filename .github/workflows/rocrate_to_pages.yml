@@ -23,10 +23,11 @@ jobs:
 
       - name : Make RO Crate Preview
         run: |
-          mkdir build
           ./node_modules/.bin/rochtml ro-crate-metadata.json
+          mkdir build
           mv ro-crate-preview.html build
-          ln -sf build/ro-crate-preview.html build/index.html
+          cd build
+          ln -sf ro-crate-preview.html index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
