@@ -19,7 +19,9 @@ jobs:
           node-version: 16
 
       - name: Install ro-crate-html-js
-        run: npm install ro-crate-html-js
+        run: |
+          mkdir /node_modules
+          npm install --prefix /node_modules ro-crate-html-js
 
       - name : Make RO Crate Preview
         run: ln -sf ro-crate-preview.html index.html
