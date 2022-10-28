@@ -20,8 +20,8 @@ jobs:
 
       - name: Install ro-crate-html-js
         run: |
-          mkdir /node_modules
-          npm install --prefix /node_modules ro-crate-html-js
+          mkdir .node_modules
+          npm install --prefix .node_modules ro-crate-html-js
 
       - name : Make RO Crate Preview
         run: |
