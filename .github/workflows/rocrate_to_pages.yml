@@ -18,8 +18,10 @@ jobs:
         with:
           node-version: 16
 
-      - name : Make RO Crate Preview
+      - name: Install ro-crate-html-js
         run: npm install ro-crate-html-js
+
+      - name : Make RO Crate Preview
         run: ln -sf ro-crate-preview.html index.html
 
       - name: Deploy
