@@ -3,17 +3,24 @@ on:
   push:
     branches:
       - master
+      - workflow-only
   pull_request:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-20.04
     concurrency: ci-${{github.ref}}
     steps:
-      - name: Checkout
+      - name: Check out repo code
         uses: actions/checkout@v3
 
-      - name: Build RO Crate Preview
-        uses: gcapes/rocrate-to-ghpages-action@link
+      - name: Set up nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name : Make RO Crate Preview
+        run: npm install ro-crate-html-js
+        run: ln -sf ro-crate-preview.html index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
