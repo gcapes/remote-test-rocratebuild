@@ -19,17 +19,17 @@ jobs:
           node-version: 16
 
       - name: Install ro-crate-html-js
-        run: |
-          mkdir .node_modules
-          npm install --prefix .node_modules ro-crate-html-js
+        run: npm install ro-crate-html-js
 
       - name : Make RO Crate Preview
         run: |
-          .node_modules/node_modules/.bin/rochtml ro-crate-metadata.json
-          ln -sf ro-crate-preview.html index.html
+          mkdir build
+          ./node_modules/.bin/rochtml ro-crate-metadata.json
+          mv ro-crate-preview.html build
+          ln -sf build/ro-crate-preview.html build/index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .
+          folder: build
           branch: gh-pages
