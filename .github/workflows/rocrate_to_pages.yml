@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build RO Crate Preview
-        uses: gcapes/rocrate-to-ghpages-action@master
+        uses: gcapes/rocrate-to-ghpages-action@link
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
