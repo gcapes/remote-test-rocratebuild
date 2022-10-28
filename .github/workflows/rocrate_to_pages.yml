@@ -24,7 +24,9 @@ jobs:
           npm install --prefix /node_modules ro-crate-html-js
 
       - name : Make RO Crate Preview
-        run: ln -sf ro-crate-preview.html index.html
+        run: |
+          rochtml ro-crate-metadata.json
+          ln -sf ro-crate-preview.html index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
