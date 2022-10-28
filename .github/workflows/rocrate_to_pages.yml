@@ -23,6 +23,9 @@ jobs:
           mkdir .node_modules
           npm install --prefix .node_modules ro-crate-html-js
 
+      - name: Find rochtml
+        run: find .node_modules -name rochtml
+
       - name : Make RO Crate Preview
         run: |
           .node_modules/.bin/rochtml ro-crate-metadata.json
