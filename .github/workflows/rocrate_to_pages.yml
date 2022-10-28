@@ -5,6 +5,8 @@ on:
       - master
       - workflow-only
   pull_request:
+env:
+  build-dir: build
 jobs:
   build-and-deploy:
     runs-on: ubuntu-20.04
@@ -24,13 +26,13 @@ jobs:
       - name : Make RO Crate Preview
         run: |
           ./node_modules/.bin/rochtml ro-crate-metadata.json
-          mkdir build
-          mv ro-crate-preview.html build
-          cd build
+          mkdir ${{env.build-dir}}
+          mv ro-crate-preview.html ${{env.build-dir}}
+          cd ${{env.build-dir}}
           ln -sf ro-crate-preview.html index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build
+          folder: ${{env.build-dir}}
           branch: gh-pages
