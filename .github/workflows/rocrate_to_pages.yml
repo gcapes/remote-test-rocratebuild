@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build RO Crate Preview
-        uses: ResearchObject/ro-crate-preview-action@v1.1.0
+        uses: ResearchObject/ro-crate-preview-action@new-js-tool
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
